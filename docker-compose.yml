@@ -1,0 +1,18 @@
+version: '2'
+services:
+  employee-jdbc:
+    image: repositorymanager
+    ports:
+      - "8080:8080"
+    networks:
+      - negev_seals_network
+    depends_on:
+      - postgres_container
+  postgres_container:
+    image: postgres
+    ports:
+     - "5432:5432"
+    environment:
+     - POSTGRES_PASSWORD=BEST_TEAM_EVER
+     - POSTGRES_USER=negev_seals_user
+     - POSTGRES_DB=repository_manager_db
